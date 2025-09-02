@@ -1,0 +1,7 @@
+__pycache__/ 
+*.pyc 
+.vscode/ 
+*.log 
+.env 
+ccs106_env_lastname 
+ccs106_env_olivares 
