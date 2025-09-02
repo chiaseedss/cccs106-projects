@@ -31,6 +31,8 @@ def main(page: ft.Page):
         ft.Text("Program: BS Computer Science", size=14),
         ft.Text(f"Date: {datetime.now().strftime('%B %d, %Y')}", size=14),
     ])
+
+
     
     # Interactive name input
     name_input = ft.TextField(
@@ -72,16 +74,11 @@ def main(page: ft.Page):
             title=ft.Text("Application Information"),
             content=ft.Text(info_text),
             actions=[
-                ft.TextButton("Close", on_click=lambda e: close_dialog(dialog))
-            ]
+                ft.TextButton("Close", on_click=lambda e: page.close(dialog))
+            ],
         )
         page.dialog = dialog
-        dialog.open = True
-        page.update()
-    
-    def close_dialog(dialog):
-        dialog.open = False
-        page.update()
+        page.open(dialog)
     
     # Buttons with styling
     hello_button = ft.ElevatedButton(
