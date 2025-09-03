@@ -62,24 +62,33 @@ With this activity, I was able to refresh my knowledge with version control and 
 
 ### Git Repository
  - GitHub repository with commit history
+
 ![github repo](lab2_screenshots/github-repo_commit-history.png)
 
+
 - Local git log showing commits
+
 ![local git log](lab2_screenshots/local_git_log.png)
 
 ### GUI Applications
 - 'hello_flet.py running with all features
+
 ![hello_flet output](lab2_screenshots/hello_flet1.png)
+
 - fixed app info
+
 ![hello_flet app info dialog](lab2_screenshots/hello_flet2.png)
 
 
 - personal_info_gui.py with filled form and generated profile plus fixed layout
+
 ![personal_info_gui output](lab2_screenshots/personal_info_gui.png)
+
 - fixed error diaolog
+
 ![personal_info_gui no input error](lab2_screenshots/personal_info_gui2.png)
 ![personal_info_gui invalid age input error](lab2_screenshots/personal_info_gui3.png)
 
-## Future Enhancements
+## Feuture Enhancements
 - Implement responsive layout
 - Additional interactive features for the generated profiles

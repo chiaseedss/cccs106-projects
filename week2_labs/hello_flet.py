@@ -10,7 +10,7 @@ def main(page: ft.Page):
     # Page configuration
     page.title = "CCCS 106 - Hello Flet"
     page.window.width = 500
-    page.window.height = 400
+    page.window.height = 600
     page.padding = 20
     page.theme_mode = ft.ThemeMode.LIGHT
     
@@ -79,7 +79,8 @@ def main(page: ft.Page):
         )
         page.dialog = dialog
         page.open(dialog)
-    
+
+
     # Buttons with styling
     hello_button = ft.ElevatedButton(
         "Say Hello",
