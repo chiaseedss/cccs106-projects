@@ -23,15 +23,15 @@ def main(page: ft.Page):
     )
     
     # Input fields
-    first_name = ft.TextField(label="First Name", width=280)
-    last_name = ft.TextField(label="Last Name", width=280)
-    age = ft.TextField(label="Age", width=100, keyboard_type=ft.KeyboardType.NUMBER)
-    student_id = ft.TextField(label="Student ID", width=200)
+    first_name = ft.TextField(label="First Name", width=250)
+    last_name = ft.TextField(label="Last Name", expand=True)
+    age = ft.TextField(label="Age", width=150, keyboard_type=ft.KeyboardType.NUMBER)
+    student_id = ft.TextField(label="Student ID", expand=True)
     
     # Dropdown for program
     program_dropdown = ft.Dropdown(
         label="Academic Program",
-        width=300,
+        expand=True,
         options=[
             ft.dropdown.Option("BSCS", "Bachelor of Science in Computer Science"),
             ft.dropdown.Option("BSIT", "Bachelor of Science in Information Technology"),
@@ -63,7 +63,7 @@ def main(page: ft.Page):
         ]
     )
     
-    hobbies = ft.TextField(label="Hobbies/Interests", width=400, multiline=True)
+    hobbies = ft.TextField(label="Hobbies/Interests", expand=True, multiline=True)
     
     # Output container
     output_container = ft.Container(
@@ -76,15 +76,22 @@ def main(page: ft.Page):
     
     # Functions
     def generate_profile(e):
+        # Validate inputs
+        if not all([first_name.value, last_name.value, age.value]):
+            show_error("Please fill in all required fields (Name and Age)!")
+            return
+        
+        # Validate age
         try:
-            # Validate inputs
-            if not all([first_name.value, last_name.value, age.value]):
-                show_error("Please fill in all required fields (Name and Age)!")
-                return
-            
+            age_int = int(age.value)  
+        except ValueError:
+            show_error("Please enter a valid age (number only)!")  
+            return
+        
+        try:
             # Calculate birth year
             current_year = datetime.now().year
-            birth_year = current_year - int(age.value)
+            birth_year = current_year - age_int
             graduation_year = current_year + (4 - int(year_level.value[0]) if year_level.value else 4)
             
             # Generate profile
@@ -93,7 +100,7 @@ def main(page: ft.Page):
                 ft.Divider(),
                 ft.Text(f"👤 Full Name: {first_name.value} {last_name.value}", size=16),
                 ft.Text(f"🆔 Student ID: {student_id.value or 'Not provided'}", size=16),
-                ft.Text(f"🎂 Age: {age.value} years old", size=16),
+                ft.Text(f"🎂 Age: {age_int} years old", size=16),
                 ft.Text(f"📅 Birth Year: {birth_year}", size=16),
                 ft.Text(f"📚 Program: {program_dropdown.value or 'Not selected'}", size=16),
                 ft.Text(f"📊 Year Level: {year_level.value or 'Not selected'}", size=16),
@@ -108,8 +115,6 @@ def main(page: ft.Page):
             output_container.content = profile_content
             page.update()
             
-        except ValueError:
-            show_error("Please enter a valid age (number only)!")
         except Exception as ex:
             show_error(f"An error occurred: {str(ex)}")
     
@@ -129,15 +134,10 @@ def main(page: ft.Page):
         error_dialog = ft.AlertDialog(
             title=ft.Text("Input Error"),
             content=ft.Text(message),
-            actions=[ft.TextButton("OK", on_click=lambda e: close_error_dialog(error_dialog))]
+            actions=[ft.TextButton("OK", on_click=lambda e: page.close(error_dialog))],
         )
         page.dialog = error_dialog
-        error_dialog.open = True
-        page.update()
-    
-    def close_error_dialog(dialog):
-        dialog.open = False
-        page.update()
+        page.open(error_dialog)
     
     # Buttons
     generate_btn = ft.ElevatedButton(
@@ -167,10 +167,9 @@ def main(page: ft.Page):
             program_dropdown,
             ft.Text("Year Level:", size=16, weight=ft.FontWeight.BOLD),
             year_level,
-            favorite_color,
-            hobbies,
+            ft.Row([favorite_color, hobbies], spacing=20),
             ft.Divider(),
-            ft.Row([generate_btn, clear_btn], spacing=20),
+            ft.Row([generate_btn, clear_btn], spacing=20, alignment=ft.MainAxisAlignment.CENTER),
             ft.Divider(),
             ft.Text("Generated Profile:", size=18, weight=ft.FontWeight.BOLD),
             output_container,
