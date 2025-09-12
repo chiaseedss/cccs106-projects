@@ -3,4 +3,7 @@ __pycache__/
 .vscode/ 
 *.log 
 .env 
-ccs106_env_olivares 
+cccs106_env_olivares/
+lab1_screenshots/
+lab2_screenshots/
+activate_env.bat
