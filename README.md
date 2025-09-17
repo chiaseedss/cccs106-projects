@@ -19,6 +19,10 @@ Academic Year 2025-2026
 - `week2_labs/personal_info_gui.py` - Enhanced personal information manager
 - `week2_labs/enhanced_calculator.py` - GUI calculator (coming soon)
 
+### Week 3 Labs - Flet User Login Application
+- `week3_labs/src/db_connection.py` - Database Connection
+- `week3_labs/src/main.py` - User Login Interface
+
 ### Module 1 Final Project
 - `module1_final/` - Final integrated project (TBD)
 
