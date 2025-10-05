@@ -4,6 +4,4 @@ __pycache__/
 *.log 
 .env 
 cccs106_env_olivares/
-lab1_screenshots/
-lab2_screenshots/
 activate_env.bat
