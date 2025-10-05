@@ -81,19 +81,18 @@ Through this lab, I  strengthened my skills in building interactive desktop appl
 
 ![main_window](lab4_screenshots/contact_book_window.png)
 
-### ➕ Add Contact  
+- Add Contact  
 ![add_contact](lab4_screenshots/add_contact.png)
 
-### 📝 Edit Contact  
+- Edit Contact  
 ![edit_contact](lab4_screenshots/edit_contact.png)
 
-### ❌ Delete Contact Confirmation  
+- Delete Contact Confirmation  
 ![delete_contact](lab4_screenshots/delete_confirmation.png)
 
-### 🧠 Search Contact
+- Search Contact
 ![search_contact](lab4_screenshots/search_contact.png)
 
----
 
 ## Feature enhancement:
 - Input validation for empty names  
