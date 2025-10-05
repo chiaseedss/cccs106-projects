@@ -25,8 +25,8 @@ Academic Year 2025-2026
 
 ### Week 4 Labs - Contact Book Application Enhancement
 - `week4_labs/src/database.py` - Database Layer
-- `week3_labs/src/app_logic.py` - Application Logic
-- `week3_labs/src/main.py` - Main User Interface
+- `week4_labs/src/app_logic.py` - Application Logic
+- `week4_labs/src/main.py` - Main User Interface
 
 ### Module 1 Final Project
 - `module1_final/` - Final integrated project (TBD)
