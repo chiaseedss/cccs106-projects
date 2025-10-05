@@ -137,7 +137,16 @@ def open_edit_dialog(page, contact, db_conn, contacts_list_view):
     dialog = ft.AlertDialog(
         modal=True,
         title=ft.Text("Edit Contact"),
-        content=ft.Column([edit_name, edit_phone, edit_email]),
+                content=ft.Container(
+            content=ft.Column(
+                    controls=[edit_name, edit_phone, edit_email],
+                    tight=True,          
+                    spacing=10,          
+                    horizontal_alignment=ft.CrossAxisAlignment.CENTER
+                ),
+                padding=10,
+                width=300,            
+            ),
         actions=[
             ft.TextButton(
                 "Cancel",

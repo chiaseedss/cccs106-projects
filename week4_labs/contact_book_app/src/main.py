@@ -6,7 +6,7 @@ def main(page: ft.Page):
     page.title = "Contact Book"
     page.vertical_alignment = ft.MainAxisAlignment.START
     page.window.width = 600
-    page.window.height = 600
+    page.window.height = 950
 
     db_conn = init_db()
 
@@ -38,8 +38,8 @@ def main(page: ft.Page):
         expand=True,
     )
 
-    contacts_list_view = ft.ListView(expand=1, spacing=10, auto_scroll=True)
-
+    contacts_list_view = ft.ListView(expand=1, spacing=10)
+    
     add_button = ft.ElevatedButton(
         text="Add Contact",
         icon=ft.Icons.ADD,
@@ -49,6 +49,12 @@ def main(page: ft.Page):
             padding=ft.padding.symmetric(horizontal=30, vertical=5),
         ),
         on_click=lambda e: add_contact(page, inputs, contacts_list_view, db_conn),
+    )
+
+    contacts_container = ft.Container(
+        content=contacts_list_view,
+        height=400,
+        expand=False,
     )
 
     page.add(
@@ -74,14 +80,11 @@ def main(page: ft.Page):
                     ft.Divider(),
                     ft.Text("Contacts:", size=20, weight=ft.FontWeight.BOLD),
                     search_field,
-                    contacts_list_view,
+                    contacts_container,
                 ],
-                scroll=ft.ScrollMode.AUTO,
                 spacing=10,
-                expand=True,
             ),
             padding=10,
-            expand=True,
         )
     )
     display_contacts(page, contacts_list_view, db_conn)
