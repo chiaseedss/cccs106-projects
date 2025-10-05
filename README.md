@@ -23,6 +23,11 @@ Academic Year 2025-2026
 - `week3_labs/src/db_connection.py` - Database Connection
 - `week3_labs/src/main.py` - User Login Interface
 
+### Week 4 Labs - Contact Book Application Enhancement
+- `week4_labs/src/database.py` - Database Layer
+- `week3_labs/src/app_logic.py` - Application Logic
+- `week3_labs/src/main.py` - Main User Interface
+
 ### Module 1 Final Project
 - `module1_final/` - Final integrated project (TBD)
 
