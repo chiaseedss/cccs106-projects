@@ -13,7 +13,7 @@ def connect_db():
             return connection
     except Error as e:
         print(f"Error while connecting to MySQL: {e}")
-        return None
+        raise
 
 if __name__ == "__main__":
     conn = connect_db()
