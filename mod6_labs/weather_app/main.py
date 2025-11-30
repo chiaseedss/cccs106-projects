@@ -581,9 +581,47 @@ class WeatherApp:
         if self.page.theme_mode == ft.ThemeMode.LIGHT:
             self.page.theme_mode = ft.ThemeMode.DARK
             self.theme_button.icon = ft.Icons.LIGHT_MODE
+            # Dark mode colors
+            self.city_input.fill_color = ft.Colors.GREY_800
+            
+            # Update weather container to dark surface color
+            if self.weather_container.visible:
+                self.weather_container.bgcolor = ft.Colors.GREY_900
+                # Update info cards
+                if hasattr(self, 'info_cards'):
+                    for card in self.info_cards:
+                        card.bgcolor = ft.Colors.GREY_800
+            
+            # Update forecast container
+            if self.forecast_container.visible:
+                self.forecast_container.bgcolor = ft.Colors.GREY_900
+                # Update forecast cards
+                forecast_row = self.forecast_container.content.controls[1]
+                for card in forecast_row.controls:
+                    card.bgcolor = ft.Colors.GREY_800
         else:
             self.page.theme_mode = ft.ThemeMode.LIGHT
             self.theme_button.icon = ft.Icons.DARK_MODE
+            # Light mode colors
+            self.city_input.fill_color = ft.Colors.GREY_300
+            
+            # Update weather container back to weather-based color
+            if self.weather_container.visible and self.current_weather_data:
+                weather_id = self.current_weather_data.get("weather", [{}])[0].get("id", 800)
+                self.weather_container.bgcolor = self.get_weather_color(weather_id)
+                # Update info cards
+                if hasattr(self, 'info_cards'):
+                    for card in self.info_cards:
+                        card.bgcolor = ft.Colors.WHITE
+            
+            # Update forecast container
+            if self.forecast_container.visible:
+                self.forecast_container.bgcolor = ft.Colors.BLUE_50
+                # Update forecast cards
+                forecast_row = self.forecast_container.content.controls[1]
+                for card in forecast_row.controls:
+                    card.bgcolor = ft.Colors.WHITE
+        
         self.page.update()
     
     def toggle_units(self, e):
