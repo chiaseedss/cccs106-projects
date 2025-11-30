@@ -3,6 +3,7 @@
 import flet as ft
 import json
 import httpx
+import asyncio
 from pathlib import Path
 from weather_service import WeatherService
 from config import Config
@@ -315,12 +316,14 @@ class WeatherApp:
         self.page.update()
         self.page.run_task(self.get_weather)
 
-    def hide_history_suggestions(self, e):
-        """Hide suggestions when input loses focus."""
-        import time
-        time.sleep(0.2)
-        self.history_suggestions.visible = False
-        self.page.update()
+    def hide_history_suggestions(self, e): 
+        """Hide suggestions when input loses focus.""" 
+        async def delayed_hide():
+            await asyncio.sleep(0.3)
+            self.history_suggestions.visible = False
+            self.page.update()
+        
+        self.page.run_task(delayed_hide)
 
     def select_history_item(self, city: str):
         """Select a city from history suggestions."""
@@ -425,7 +428,6 @@ class WeatherApp:
         self.error_message.visible = False
         self.page.update()
         
-        import asyncio
         await asyncio.sleep(0.1)
         self.weather_container.opacity = 1
         self.page.update()
